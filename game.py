@@ -1,6 +1,5 @@
 from ribs import *
 from dataclasses import dataclass
-import pygame
 
 # Asset dictionary for holding all your assets.
 assets = {}
@@ -56,7 +55,7 @@ def draw_player(player):
     window = pg.display.get_surface()
     img = assets["myra"]
     if face_left:
-        img = pygame.transform.flip(img, True, False)
+        img = pg.transform.flip(img, True, False)
     draw_transformed(img, (player.centerx, player.centery), (0.1, 0.1))
 
 
