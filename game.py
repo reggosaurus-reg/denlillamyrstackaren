@@ -20,15 +20,30 @@ class Player:
     velocity = (0, 0)
 
     walk_acc = 1000.0
+    jump_vel = 250
+
     max_walk_speed = 100
     slow_down = 0.01
 
+def player_is_on_ground(player, walls):
+    ground_detector = pg.Rect(player.centerx,
+                              player.centery + 1,
+                              player.width * 0.9,
+                              player.height * 0.9)
+    for wall in walls:
+        _, _, yes = solve_rect_overlap(ground_detector,
+                                       wall,
+                                       mass_b=0)
+        if yes:
+            return True
+    return False
 
-def update_player(player, delta):
+def update_player(player, delta, walls):
     (left, right) = (key_down("a") or key_down(pg.K_LEFT),
                      key_down("d") or key_down(pg.K_RIGHT))
     global face_left
     face_left = left
+
     if left and not right:
         player.velocity = (player.velocity[0] - player.walk_acc * delta,
                            player.velocity[1])
@@ -40,8 +55,11 @@ def update_player(player, delta):
         player.velocity = (player.velocity[0] * (player.slow_down ** delta),
                            player.velocity[1])
 
+    if key_pressed(" ") and player_is_on_ground(player, walls):
+        player.velocity = (player.velocity[0], -player.jump_vel)
+
     # Gravity
-    player.velocity = (player.velocity[0], player.velocity[1] + 100 * delta)
+    player.velocity = (player.velocity[0], player.velocity[1] + 500 * delta)
 
     max_speed = player.max_walk_speed
     clamped_horizontal_speed = clamp(player.velocity[0], -max_speed, max_speed)
@@ -138,7 +156,7 @@ def update():
     # Main update loop
     while True:
         clear_screen(pg.Color(170, 180, 255))
-        update_player(player, delta())
+        update_player(player, delta(), walls)
         draw_player(player)
 
         for wall in walls:
