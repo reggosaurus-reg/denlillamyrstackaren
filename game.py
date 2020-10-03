@@ -60,7 +60,7 @@ levels = [
 #        #
 #        #
 #        #
-# S    E #
+# S B  E #
 ##########
 """,
 """
@@ -87,6 +87,7 @@ def parse_level(level_string):
 
     walls = []
     goals = []
+    barrs = []
     start = None
 
     level_lines = level_string.strip().split("\n")
@@ -101,11 +102,14 @@ def parse_level(level_string):
             elif c == "E":
                 # It's a goal
                 goals.append(r)
+            elif c == "B":
+                # It's a Barr
+                barrs.append(r)
             elif c == "S":
                 # It's the start
                 start = (x, y)
 
-    return walls, goals, start
+    return walls, goals, start, barrs
 
 
 def init():
@@ -114,6 +118,8 @@ def init():
     """
     # Load images here
     assets["teapot"] = pg.image.load("res/teapot.png")
+    
+    assets["barr"] = pg.image.load("res/barr.png")
 
     # Load sounds here
     assets["plong"] = pg.mixer.Sound("res/plong.wav")
@@ -126,7 +132,7 @@ def update():
     # Initialization (only runs on start/restart)
     player = Player()
 
-    walls, goals, start = parse_level(levels[current_level])
+    walls, goals, start, barrs = parse_level(levels[current_level])
     player.centerx = start[0]
     player.centery = start[1]
 
@@ -145,6 +151,11 @@ def update():
                                                                mass_b=0,
                                                                bounce=0.1)
             player.velocity = player_vel
+
+        for barr in barrs:
+            window = pg.display.get_surface()
+            draw_transformed(assets["barr"], barr)
+
 
         for goal in goals:
             window = pg.display.get_surface()
