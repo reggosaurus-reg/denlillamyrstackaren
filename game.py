@@ -63,7 +63,7 @@ def update_player(player, delta, walls):
         player.velocity = (0,
                            player.velocity[1])
 
-    if key_pressed(" ") and is_on_ground:
+    if (key_down(" ") or key_down(pg.K_UP)) and is_on_ground:
         player.velocity = (player.velocity[0], -player.jump_vel)
 
     # Gravity
@@ -214,6 +214,9 @@ def update():
                 restart()
 
         draw_text(f"Level: {current_level + 1}", (0, 0))
+
+        if key_down("q") or key_down(pg.K_ESCAPE):
+            break
 
         # Main loop ends here, put your code above this line
         yield
