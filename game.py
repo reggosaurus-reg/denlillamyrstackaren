@@ -27,6 +27,9 @@ class Player:
     max_walk_speed = 100
     slow_down = 0.01
 
+    has_barr = False
+
+
 def player_is_on_ground(player, walls):
     size = player.width * 0.9
     ground_detector = pg.Rect(player.centerx - size / 2,
@@ -40,6 +43,7 @@ def player_is_on_ground(player, walls):
         if yes:
             return True
     return False
+
 
 def update_player(player, delta, walls):
     (left, right) = (key_down("a") or key_down(pg.K_LEFT),
@@ -186,6 +190,10 @@ def update():
             window = pg.display.get_surface()
             draw_transformed(assets["barr"], barr, (0.1, 0.1))
 
+            normal, depth = overlap_data(player, pg.Rect(barr))
+            if depth > 0:
+                player.has_barr = True
+                barrs.remove(barr)
 
         for goal in goals:
             window = pg.display.get_surface()
