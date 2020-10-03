@@ -90,8 +90,12 @@ def update_player(player, delta, walls):
 
 def update_enemy(enemy, delta, walls):
 
-    enemy.velocity = (enemy.velocity[0] + enemy.walk_acc * delta,
-                       enemy.velocity[1])
+    if enemy.face_left:
+        enemy.velocity = (enemy.velocity[0] - enemy.walk_acc * delta,
+                           enemy.velocity[1])
+    else:
+        enemy.velocity = (enemy.velocity[0] + enemy.walk_acc * delta,
+                           enemy.velocity[1])
     # Gravity
     enemy.velocity = (enemy.velocity[0], enemy.velocity[1] + 500 * delta)
 
@@ -103,12 +107,17 @@ def update_enemy(enemy, delta, walls):
     enemy.centery += enemy.velocity[1] * delta
 
     for wall in walls:
+        # Collide
         enemy_vel, wall_vel, overlap = solve_rect_overlap(enemy,
                                                            wall,
                                                            enemy.velocity,
                                                            mass_b=0,
                                                            bounce=0.1)
-        enemy.velocity = enemy_vel
+        # Turn if hit wall (not working yet)
+        normal, depth = overlap_data(enemy, wall)
+        if depth > 0 and normal[1] > 0:
+            enemy.velocity = (-enemy.velocity[0], enemy.velocity[1])
+            enemy.face_left = not enemy.face_left
 
 def draw_player(player):
     window = pg.display.get_surface()
