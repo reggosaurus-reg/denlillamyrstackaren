@@ -28,10 +28,11 @@ class Player:
     slow_down = 0.01
 
 def player_is_on_ground(player, walls):
-    ground_detector = pg.Rect(player.centerx,
-                              player.centery + 1,
-                              player.width * 0.9,
-                              player.height * 0.9)
+    size = player.width * 0.9
+    ground_detector = pg.Rect(player.centerx - size / 2,
+                              player.centery + player.height / 2,
+                              size,
+                              0.1)
     for wall in walls:
         _, _, yes = solve_rect_overlap(ground_detector,
                                        wall,
