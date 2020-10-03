@@ -273,6 +273,7 @@ def init():
 
     # Load sounds here
     assets["plong"] = pg.mixer.Sound("res/plong.wav")
+    assets["background"] = pg.mixer.music.load("res/backgroundmusic.mp3")
 
 
 current_level = 0
@@ -281,6 +282,7 @@ def update():
     global current_level
     # Initialization (only runs on start/restart)
     player = Player()
+    pg.mixer.music.play()
 
     walls, goals, start, barrs, enemies = parse_level(levels[current_level])
     player.centerx = start[0]
