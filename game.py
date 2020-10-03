@@ -20,7 +20,7 @@ class Player:
     velocity = (0, 0)
 
     walk_acc = 1000.0
-    jump_vel = 250
+    jump_vel = 300
 
     face_left = False
 
@@ -146,6 +146,26 @@ levels = [
 ##########
 """,
 """
+###########################
+#                         #
+#                         #
+#                         #
+#                         #
+#                         #
+#                         #
+#                         #
+#                         #
+#                         #
+#                         #
+#                         #
+#                         #
+#                         #
+#                         #
+#                         #
+#  B X    SE B   B        #
+###########################
+""",
+"""
 ############
 #          #
 # S       B#
@@ -160,6 +180,37 @@ levels = [
 ##    #  # #
 ##E        #
 ############
+""",
+"""
+############
+#          #
+#B       B #
+### #    # #
+#     #    #
+#       #  #
+#         ##
+# E S    ###
+############
+""",
+"""
+###########################
+#                         #
+#           B             #
+#          ###            #
+#        ###              #
+#       ##                #
+#     ###  #              #
+#    #######              #
+#      ###                #
+###    ##                 #
+#     ####                #
+#    ######               #
+## #  ### B     ##        #
+#  ##########   ###       #
+# ##             ####     #
+#                      ####
+##  S    B E S   B     ####
+###########################
 """,
 ]
 
@@ -186,7 +237,7 @@ def parse_level(level_string):
                 goals.append(r)
             elif c == "B":
                 # It's a Barr
-                k = (r[0], r[1]+GRID_SIZE*0.85, r[2], r[3])
+                k = (r[0] + GRID_SIZE / 2, r[1]+GRID_SIZE*0.85, r[2], r[3])
                 barrs.append(k)
             elif c in "XY":
                 # It's an enemy
@@ -234,6 +285,11 @@ def update():
     player.centerx = start[0]
     player.centery = start[1]
 
+    level_lines = levels[current_level].splitlines()[1:]
+    width = len(level_lines[1]) * GRID_SIZE
+    height = len(level_lines) * GRID_SIZE
+    pg.display.set_mode((width, height))
+
     # Main update loop
     while True:
         clear_screen(pg.Color(170, 180, 255))
@@ -245,7 +301,7 @@ def update():
             draw_enemy(enemy)
             _, depth = overlap_data(player, enemy)
             if depth > 0:
-                player.velocity = (0, 0) # TODO: This doesn't seem to work?
+                player.velocity = (0, 0)
                 restart()
 
         for wall in walls:
