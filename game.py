@@ -90,7 +90,7 @@ levels = [
 #        #
 #        #
 #        #
-# S B  E #
+# S B E B#
 ##########
 """,
 """
@@ -202,6 +202,11 @@ def update():
 
             normal, depth = overlap_data(player, goal)
             if depth > 0:
+                # Can't win if there's barr in the world!
+                if barrs:
+                    continue
+                # If carrying a barr - drop it in the stack!
+                player.has_barr = False
                 current_level = (current_level + 1) % len(levels)
                 restart()
 
