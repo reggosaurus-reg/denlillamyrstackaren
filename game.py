@@ -204,8 +204,12 @@ def update():
         draw_player(player)
 
         for enemy in enemies:
-            # update_enemy
+            # TODO: update_enemy (movement)
             draw_enemy(enemy)
+            _, depth = overlap_data(player, enemy)
+            if depth > 0:
+                player.velocity = (0, 0) # TODO: This doesn't seem to work?
+                restart()
 
         for wall in walls:
             window = pg.display.get_surface()
