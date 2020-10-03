@@ -144,7 +144,7 @@ def update():
 
         for wall in walls:
             window = pg.display.get_surface()
-            pg.draw.rect(window, pg.Color(100, 100, 100), wall)
+            pg.draw.rect(window, pg.Color(110, 40, 0), wall)
 
             player_vel, wall_vel, overlap = solve_rect_overlap(player,
                                                                wall,
