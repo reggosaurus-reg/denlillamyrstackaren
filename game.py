@@ -156,7 +156,7 @@ def parse_level(level_string):
                 goals.append(r)
             elif c == "B":
                 # It's a Barr
-                k = (r[0], r[1]+GRID_SIZE*0.85, r[2], r[3])
+                k = (r[0] + GRID_SIZE / 2, r[1]+GRID_SIZE*0.85, r[2], r[3])
                 barrs.append(k)
             elif c == "X":
                 # It's an enemy
