@@ -48,10 +48,8 @@ def update_player(player, delta):
 
 def draw_player(player):
     window = pg.display.get_surface()
-    pg.draw.rect(window, pg.Color(100, 30, 30), (player.centerx - player.width / 2,
-                                                 player.centery - player.height / 2,
-                                                 player.width,
-                                                 player.height))
+    draw_transformed(assets["teapot"], (player.centerx, player.centery))
+
 
 levels = [
 """
