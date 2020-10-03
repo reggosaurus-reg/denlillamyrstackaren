@@ -110,10 +110,10 @@ def init():
         (Audio assets can at their earliest be loaded here.)
     """
     # Load images here
-    assets["teapot"] = pg.image.load("teapot.png")
+    assets["teapot"] = pg.image.load("res/teapot.png")
 
     # Load sounds here
-    assets["plong"] = pg.mixer.Sound("plong.wav")
+    assets["plong"] = pg.mixer.Sound("res/plong.wav")
 
 
 current_level = 0
