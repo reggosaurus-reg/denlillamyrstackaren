@@ -86,6 +86,7 @@ def parse_level(level_string):
 
     walls = []
     goals = []
+    teapots = []
     start = None
 
     level_lines = level_string.strip().split("\n")
@@ -103,6 +104,9 @@ def parse_level(level_string):
             elif c == "S":
                 # It's the start
                 start = (x, y)
+            elif c == "T":
+                # It's a teapot
+                teapots.append((x, y))
 
     return walls, goals, start
 
