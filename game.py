@@ -24,8 +24,8 @@ class Player:
 
 
 def update_player(player, delta):
-    (left, right) = (key_down("a") or key_down(pg.K_RIGHT),
-                     key_down("d") or key_down(pg.K_LEFT))
+    (left, right) = (key_down("d") or key_down(pg.K_RIGHT),
+                     key_down("a") or key_down(pg.K_LEFT))
 
     if left and not right:
         player.velocity = (player.velocity[0] + player.walk_acc * delta,
