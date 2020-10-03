@@ -242,7 +242,6 @@ def update():
 
     level_lines = levels[current_level].splitlines()[1:]
     width = len(level_lines[1]) * GRID_SIZE
-    print(width)
     height = len(level_lines) * GRID_SIZE
     pg.display.set_mode((width, height))
 
@@ -257,7 +256,7 @@ def update():
             draw_enemy(enemy)
             _, depth = overlap_data(player, enemy)
             if depth > 0:
-                player.velocity = (0, 0) # TODO: This doesn't seem to work?
+                player.velocity = (0, 0)
                 restart()
 
         for wall in walls:
