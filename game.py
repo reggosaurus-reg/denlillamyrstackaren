@@ -25,7 +25,6 @@ class Player:
     face_left = False
 
     max_walk_speed = 100
-    slow_down = 0.01
 
     has_barr = False
 
@@ -49,6 +48,8 @@ def update_player(player, delta, walls):
     (left, right) = (key_down("a") or key_down(pg.K_LEFT),
                      key_down("d") or key_down(pg.K_RIGHT))
 
+    is_on_ground = player_is_on_ground(player, walls)
+
     if left and not right:
         player.velocity = (player.velocity[0] - player.walk_acc * delta,
                            player.velocity[1])
@@ -57,12 +58,12 @@ def update_player(player, delta, walls):
         player.velocity = (player.velocity[0] + player.walk_acc * delta,
                            player.velocity[1])
         player.face_left = False
-    else:
+    elif is_on_ground:
         # Yes, this is supposed to be an exponent.
-        player.velocity = (player.velocity[0] * (player.slow_down ** delta),
+        player.velocity = (0,
                            player.velocity[1])
 
-    if key_pressed(" ") and player_is_on_ground(player, walls):
+    if key_pressed(" ") and is_on_ground:
         player.velocity = (player.velocity[0], -player.jump_vel)
 
     # Gravity
