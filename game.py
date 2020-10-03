@@ -108,12 +108,24 @@ def draw_enemy(enemy):
 
 levels = [
 """
-##########
-#        #
-#        #
-#        #
-#SB X E B#
-##########
+###########################
+#                         #
+#                         #
+#                         #
+#                         #
+#                         #
+#                         #
+#                         #
+#                         #
+#                         #
+#                         #
+#                         #
+#                         #
+#                         #
+#                         #
+#                         #
+#  B X    SE B   B        #
+###########################
 """,
 """
 ############
@@ -133,6 +145,7 @@ levels = [
 """,
 """
 ############
+#          #
 #B       B #
 ### #    # #
 #     #    #
@@ -140,6 +153,26 @@ levels = [
 #         ##
 # E S    ###
 ############
+""",
+"""
+###########################
+#                         #
+#           B             #
+#          ###            #
+#        ###              #
+#       ##                #
+#     ###  #              #
+#    #######              #
+#      ###                #
+###    ##                 #
+#     ####                #
+#    ######               #
+## #  ### B     ##        #
+#  ##########   ###       #
+# ##             ####     #
+#                      ####
+##  S    B E S   B     ####
+###########################
 """,
 ]
 
@@ -206,6 +239,12 @@ def update():
     walls, goals, start, barrs, enemies = parse_level(levels[current_level])
     player.centerx = start[0]
     player.centery = start[1]
+
+    level_lines = levels[current_level].splitlines()[1:]
+    width = len(level_lines[1]) * GRID_SIZE
+    print(width)
+    height = len(level_lines) * GRID_SIZE
+    pg.display.set_mode((width, height))
 
     # Main update loop
     while True:
