@@ -91,7 +91,7 @@ levels = [
 #        #
 #        #
 #        #
-# S B E B#
+#SB B E B#
 ##########
 """,
 """
@@ -192,7 +192,7 @@ def update():
             draw_transformed(assets["barr"], barr, (0.1, 0.1))
 
             normal, depth = overlap_data(player, pg.Rect(barr))
-            if depth > 0:
+            if depth > 0 and not player.has_barr:
                 player.has_barr = True
                 barrs.remove(barr)
 
@@ -203,11 +203,11 @@ def update():
 
             normal, depth = overlap_data(player, goal)
             if depth > 0:
+                # If carrying a barr - drop it in the stack!
+                player.has_barr = False
                 # Can't win if there's barr in the world!
                 if barrs:
                     continue
-                # If carrying a barr - drop it in the stack!
-                player.has_barr = False
                 current_level = (current_level + 1) % len(levels)
                 restart()
 
