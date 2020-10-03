@@ -79,7 +79,10 @@ def update_player(player, delta, walls):
 
 def draw_player(player):
     window = pg.display.get_surface()
-    img = assets["myra"]
+    if player.has_barr:
+        img = assets["myra_med_barr"]
+    else:
+        img = assets["myra"]
     if player.face_left:
         img = pg.transform.flip(img, True, False)
     draw_transformed(img, (player.centerx, player.centery), (0.1, 0.1))
@@ -148,12 +151,11 @@ def init():
         (Audio assets can at their earliest be loaded here.)
     """
     # Load images here
-    assets["teapot"] = pg.image.load("res/teapot.png")
-
-    assets["barr"] = pg.image.load("res/barr.png")
-
-    assets["myra"] = pg.image.load("res/myra.png")
-    assets["myrstack"] = pg.image.load("res/myrstack.png")
+    assets["barr"]          = pg.image.load("res/barr.png")
+    assets["myra"]          = pg.image.load("res/myra.png")
+    assets["myra_med_barr"] = pg.image.load("res/myra_med_barr.png")
+    assets["myrstack"]      = pg.image.load("res/myrstack.png")
+    assets["teapot"]        = pg.image.load("res/teapot.png")
 
     # Load sounds here
     assets["plong"] = pg.mixer.Sound("res/plong.wav")
