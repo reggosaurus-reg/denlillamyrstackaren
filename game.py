@@ -28,6 +28,18 @@ class Player:
 
     has_barr = False
 
+@dataclass
+class Enemy:
+    centerx = 0
+    centery = 0
+    width = 40
+    height = 40
+
+    velocity = (0, 0)
+    walk_acc = 900.0
+    max_walk_speed = 90
+    face_left = False
+
 
 def player_is_on_ground(player, walls):
     size = player.width * 0.9
@@ -87,6 +99,12 @@ def draw_player(player):
         img = pg.transform.flip(img, True, False)
     draw_transformed(img, (player.centerx, player.centery), (0.1, 0.1))
 
+def draw_enemy(enemy):
+    window = pg.display.get_surface()
+    img = assets["myra"]
+    if enemy.face_left:
+        img = pg.transform.flip(img, True, False)
+    draw_transformed(img, (enemy.centerx, enemy.centery), (0.1, 0.1))
 
 levels = [
 """
@@ -94,7 +112,7 @@ levels = [
 #        #
 #        #
 #        #
-#SB B E B#
+#SB X E B#
 ##########
 """,
 """
@@ -121,6 +139,7 @@ def parse_level(level_string):
     walls = []
     goals = []
     barrs = []
+    enemies = []
     start = None
 
     level_lines = level_string.strip().split("\n")
@@ -139,11 +158,17 @@ def parse_level(level_string):
                 # It's a Barr
                 k = (r[0], r[1]+GRID_SIZE*0.85, r[2], r[3])
                 barrs.append(k)
+            elif c == "X":
+                # It's an enemy
+                enemy = Enemy()
+                enemy.centerx = r[0] + GRID_SIZE/2
+                enemy.centery = r[1] + GRID_SIZE/2
+                enemies.append(enemy)
             elif c == "S":
                 # It's the start
                 start = (x, y)
 
-    return walls, goals, start, barrs
+    return walls, goals, start, barrs, enemies
 
 
 def init():
@@ -168,7 +193,7 @@ def update():
     # Initialization (only runs on start/restart)
     player = Player()
 
-    walls, goals, start, barrs = parse_level(levels[current_level])
+    walls, goals, start, barrs, enemies = parse_level(levels[current_level])
     player.centerx = start[0]
     player.centery = start[1]
 
@@ -177,6 +202,10 @@ def update():
         clear_screen(pg.Color(170, 180, 255))
         update_player(player, delta(), walls)
         draw_player(player)
+
+        for enemy in enemies:
+            # update_enemy
+            draw_enemy(enemy)
 
         for wall in walls:
             window = pg.display.get_surface()
