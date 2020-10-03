@@ -4,6 +4,8 @@ from dataclasses import dataclass
 # Asset dictionary for holding all your assets.
 assets = {}
 
+GRID_SIZE = 40
+
 def clamp(val, low, high):
     return min(max(val, low), high)
 
@@ -106,7 +108,6 @@ levels = [
 
 
 def parse_level(level_string):
-    GRID_SIZE = 40
 
     walls = []
     goals = []
@@ -142,10 +143,11 @@ def init():
     """
     # Load images here
     assets["teapot"] = pg.image.load("res/teapot.png")
-    
+
     assets["barr"] = pg.image.load("res/barr.png")
 
     assets["myra"] = pg.image.load("res/myra.png")
+    assets["myrstack"] = pg.image.load("res/myrstack.png")
 
     # Load sounds here
     assets["plong"] = pg.mixer.Sound("res/plong.wav")
@@ -186,7 +188,8 @@ def update():
 
         for goal in goals:
             window = pg.display.get_surface()
-            pg.draw.rect(window, pg.Color(20, 100, 20), goal)
+            shifted_pos = (goal[0]+GRID_SIZE/2, goal[1]+GRID_SIZE*0.7, goal[2], goal[2])
+            draw_transformed(assets["myrstack"], shifted_pos, (0.07, 0.07))
 
             normal, depth = overlap_data(player, goal)
             if depth > 0:
