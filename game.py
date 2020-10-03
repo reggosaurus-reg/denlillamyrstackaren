@@ -4,7 +4,6 @@ from dataclasses import dataclass
 # Asset dictionary for holding all your assets.
 assets = {}
 
-
 def clamp(val, low, high):
     return min(max(val, low), high)
 
@@ -19,27 +18,48 @@ class Player:
     velocity = (0, 0)
 
     walk_acc = 1000.0
+    jump_vel = 250
+
+    face_left = False
+
     max_walk_speed = 100
     slow_down = 0.01
 
+def player_is_on_ground(player, walls):
+    ground_detector = pg.Rect(player.centerx,
+                              player.centery + 1,
+                              player.width * 0.9,
+                              player.height * 0.9)
+    for wall in walls:
+        _, _, yes = solve_rect_overlap(ground_detector,
+                                       wall,
+                                       mass_b=0)
+        if yes:
+            return True
+    return False
 
-def update_player(player, delta):
-    (left, right) = (key_down("a") or key_down(pg.K_RIGHT),
-                     key_down("d") or key_down(pg.K_LEFT))
+def update_player(player, delta, walls):
+    (left, right) = (key_down("a") or key_down(pg.K_LEFT),
+                     key_down("d") or key_down(pg.K_RIGHT))
 
     if left and not right:
-        player.velocity = (player.velocity[0] + player.walk_acc * delta,
-                           player.velocity[1])
-    elif right and not left:
         player.velocity = (player.velocity[0] - player.walk_acc * delta,
                            player.velocity[1])
+        player.face_left = True
+    elif right and not left:
+        player.velocity = (player.velocity[0] + player.walk_acc * delta,
+                           player.velocity[1])
+        player.face_left = False
     else:
         # Yes, this is supposed to be an exponent.
         player.velocity = (player.velocity[0] * (player.slow_down ** delta),
                            player.velocity[1])
 
+    if key_pressed(" ") and player_is_on_ground(player, walls):
+        player.velocity = (player.velocity[0], -player.jump_vel)
+
     # Gravity
-    player.velocity = (player.velocity[0], player.velocity[1] + 100 * delta)
+    player.velocity = (player.velocity[0], player.velocity[1] + 500 * delta)
 
     max_speed = player.max_walk_speed
     clamped_horizontal_speed = clamp(player.velocity[0], -max_speed, max_speed)
@@ -51,7 +71,10 @@ def update_player(player, delta):
 
 def draw_player(player):
     window = pg.display.get_surface()
-    draw_transformed(assets["myra"], (player.centerx, player.centery), (0.1, 0.1))
+    img = assets["myra"]
+    if player.face_left:
+        img = pg.transform.flip(img, True, False)
+    draw_transformed(img, (player.centerx, player.centery), (0.1, 0.1))
 
 
 levels = [
@@ -142,12 +165,12 @@ def update():
     # Main update loop
     while True:
         clear_screen(pg.Color(170, 180, 255))
-        update_player(player, delta())
+        update_player(player, delta(), walls)
         draw_player(player)
 
         for wall in walls:
             window = pg.display.get_surface()
-            pg.draw.rect(window, pg.Color(100, 100, 100), wall)
+            pg.draw.rect(window, pg.Color(110, 40, 0), wall)
 
             player_vel, wall_vel, overlap = solve_rect_overlap(player,
                                                                wall,
