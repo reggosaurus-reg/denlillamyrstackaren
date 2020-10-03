@@ -196,7 +196,7 @@ def solve_rect_overlap(a, b, vel_a=(0, 0), vel_b=(0, 0), mass_a=1, mass_b=1, bou
     scale = lambda v, s: (v[0] * s, v[1] * s)
 
     normal, depth = overlap_data(a, b)
-    if depth < 0: return vel_a, vel_b, False
+    if depth < 0: return vel_a, vel_b, False, normal
 
     # Positional correction
     total_mass = mass_a + mass_b
@@ -215,7 +215,7 @@ def solve_rect_overlap(a, b, vel_a=(0, 0), vel_b=(0, 0), mass_a=1, mass_b=1, bou
         vel_a = add(vel_a, scale(normal, -relative_v * mass_a / total_mass))
         vel_b = add(vel_b, scale(normal,  relative_v * mass_b / total_mass))
 
-    return vel_a, vel_b, True
+    return vel_a, vel_b, True, normal
 
 
 def damping(vel, damp=0.1):

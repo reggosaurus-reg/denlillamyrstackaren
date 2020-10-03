@@ -36,8 +36,7 @@ class Enemy:
     height = 40
 
     velocity = (0, 0)
-    walk_acc = 900.0
-    max_walk_speed = 90
+    walk_speed = 90
     face_left = False
 
 
@@ -48,9 +47,9 @@ def player_is_on_ground(player, walls):
                               size,
                               0.1)
     for wall in walls:
-        _, _, yes = solve_rect_overlap(ground_detector,
-                                       wall,
-                                       mass_b=0)
+        _, _, yes, _ = solve_rect_overlap(ground_detector,
+                                          wall,
+                                          mass_b=0)
         if yes:
             return True
     return False
@@ -88,35 +87,40 @@ def update_player(player, delta, walls):
     player.centerx += player.velocity[0] * delta
     player.centery += player.velocity[1] * delta
 
-def update_enemy(enemy, delta, walls):
-
+def enemy_wall_detector(enemy):
+    size = 10
+    offset = enemy.width / 2
     if enemy.face_left:
-        enemy.velocity = (enemy.velocity[0] - enemy.walk_acc * delta,
-                           enemy.velocity[1])
+        offset = -offset
+
+    window = pg.display.get_surface()
+    x = enemy.centerx - size / 2 + offset
+    y = enemy.centery - size / 2
+
+    return pg.Rect(x, y, size, size)
+
+
+def update_enemy(enemy, delta, walls):
+    if enemy.face_left:
+        enemy.velocity = (-enemy.walk_speed,
+                          enemy.velocity[1])
     else:
-        enemy.velocity = (enemy.velocity[0] + enemy.walk_acc * delta,
-                           enemy.velocity[1])
+        enemy.velocity = (enemy.walk_speed,
+                          enemy.velocity[1])
     # Gravity
     enemy.velocity = (enemy.velocity[0], enemy.velocity[1] + 500 * delta)
-
-    max_speed = enemy.max_walk_speed
-    clamped_horizontal_speed = clamp(enemy.velocity[0], -max_speed, max_speed)
-    enemy.velocity = (clamped_horizontal_speed, enemy.velocity[1])
 
     enemy.centerx += enemy.velocity[0] * delta
     enemy.centery += enemy.velocity[1] * delta
 
+    wall_detector = enemy_wall_detector(enemy)
+
     for wall in walls:
         # Collide
-        enemy_vel, wall_vel, overlap = solve_rect_overlap(enemy,
-                                                           wall,
-                                                           enemy.velocity,
-                                                           mass_b=0,
-                                                           bounce=0.1)
+        normal, depth = overlap_data(wall_detector, wall)
+
         # Turn if hit wall (not working yet)
-        normal, depth = overlap_data(enemy, wall)
-        if depth > 0 and normal[1] > 0:
-            enemy.velocity = (-enemy.velocity[0], enemy.velocity[1])
+        if depth > 0:
             enemy.face_left = not enemy.face_left
 
 def draw_player(player):
@@ -303,12 +307,13 @@ def update():
             window = pg.display.get_surface()
             pg.draw.rect(window, pg.Color(110, 40, 0), wall)
 
-            player_vel, wall_vel, overlap = solve_rect_overlap(player,
-                                                               wall,
-                                                               player.velocity,
-                                                               mass_b=0,
-                                                               bounce=0.1)
-            player.velocity = player_vel
+            for character in [player] + enemies:
+                entity_vel, wall_vel, overlap, _ = solve_rect_overlap(character,
+                                                                      wall,
+                                                                      character.velocity,
+                                                                      mass_b=0,
+                                                                      bounce=0.1)
+                character.velocity = entity_vel
 
         for enemy in enemies:
             update_enemy(enemy, delta(), walls)
