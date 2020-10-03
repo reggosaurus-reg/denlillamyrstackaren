@@ -131,10 +131,10 @@ def draw_player(player):
 
 def draw_enemy(enemy):
     window = pg.display.get_surface()
-    img = assets["myra"]
+    img = assets["myrslok"]
     if enemy.face_left:
         img = pg.transform.flip(img, True, False)
-    draw_transformed(img, (enemy.centerx, enemy.centery), (0.1, 0.1))
+    draw_transformed(img, (enemy.centerx, enemy.centery + GRID_SIZE*0.2), (0.1, 0.1))
 
 levels = [
 """
@@ -268,6 +268,7 @@ def init():
     assets["myra"]          = pg.image.load("res/myra.png")
     assets["myra_med_barr"] = pg.image.load("res/myra_med_barr.png")
     assets["myrstack"]      = pg.image.load("res/myrstack.png")
+    assets["myrslok"]      = pg.image.load("res/myrslok.png")
     assets["teapot"]        = pg.image.load("res/teapot.png")
 
     # Load sounds here
@@ -296,14 +297,6 @@ def update():
         update_player(player, delta(), walls)
         draw_player(player)
 
-        for enemy in enemies:
-            update_enemy(enemy, delta(), walls)
-            draw_enemy(enemy)
-            _, depth = overlap_data(player, enemy)
-            if depth > 0:
-                player.velocity = (0, 0)
-                restart()
-
         for wall in walls:
             window = pg.display.get_surface()
             pg.draw.rect(window, pg.Color(110, 40, 0), wall)
@@ -314,6 +307,14 @@ def update():
                                                                mass_b=0,
                                                                bounce=0.1)
             player.velocity = player_vel
+
+        for enemy in enemies:
+            update_enemy(enemy, delta(), walls)
+            draw_enemy(enemy)
+            _, depth = overlap_data(player, enemy)
+            if depth > 0:
+                player.velocity = (0, 0)
+                restart()
 
         for barr in barrs:
             window = pg.display.get_surface()
