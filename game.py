@@ -119,7 +119,7 @@ def update_enemy(enemy, delta, walls):
         # Collide
         normal, depth = overlap_data(wall_detector, wall)
 
-        # Turn if hit wall (not working yet)
+        # Turn if hit wall
         if depth > 0:
             enemy.face_left = not enemy.face_left
 
