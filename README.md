@@ -1,6 +1,5 @@
 
-<img src="docs/ribs-logo.svg" alt="Snake-ribs logo" width="250"></img>
-# Snake-Ribs
+# Den Lilla Myrstackaren
 
 A simple Python code skeleton for making games. The code has documentation in
 the `docs` folder, and all code that is needed to get up and running is Python,
