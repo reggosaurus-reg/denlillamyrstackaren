@@ -1,9 +1,11 @@
 from ribs import *
 from dataclasses import dataclass
+import pygame
 
 # Asset dictionary for holding all your assets.
 assets = {}
 
+face_left = False
 
 def clamp(val, low, high):
     return min(max(val, low), high)
@@ -24,14 +26,15 @@ class Player:
 
 
 def update_player(player, delta):
-    (left, right) = (key_down("a") or key_down(pg.K_RIGHT),
-                     key_down("d") or key_down(pg.K_LEFT))
-
+    (left, right) = (key_down("a") or key_down(pg.K_LEFT),
+                     key_down("d") or key_down(pg.K_RIGHT))
+    global face_left
+    face_left = left
     if left and not right:
-        player.velocity = (player.velocity[0] + player.walk_acc * delta,
+        player.velocity = (player.velocity[0] - player.walk_acc * delta,
                            player.velocity[1])
     elif right and not left:
-        player.velocity = (player.velocity[0] - player.walk_acc * delta,
+        player.velocity = (player.velocity[0] + player.walk_acc * delta,
                            player.velocity[1])
     else:
         # Yes, this is supposed to be an exponent.
@@ -51,7 +54,10 @@ def update_player(player, delta):
 
 def draw_player(player):
     window = pg.display.get_surface()
-    draw_transformed(assets["myra"], (player.centerx, player.centery), (0.1, 0.1))
+    img = assets["myra"]
+    if face_left:
+        img = pygame.transform.flip(img, True, False)
+    draw_transformed(img, (player.centerx, player.centery), (0.1, 0.1))
 
 
 levels = [
