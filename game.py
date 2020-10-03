@@ -104,7 +104,8 @@ def parse_level(level_string):
                 goals.append(r)
             elif c == "B":
                 # It's a Barr
-                barrs.append(r)
+                k = (r[0], r[1]+GRID_SIZE*0.85, r[2], r[3])
+                barrs.append(k)
             elif c == "S":
                 # It's the start
                 start = (x, y)
@@ -157,7 +158,7 @@ def update():
 
         for barr in barrs:
             window = pg.display.get_surface()
-            draw_transformed(assets["barr"], barr)
+            draw_transformed(assets["barr"], barr, (0.1, 0.1))
 
 
         for goal in goals:
