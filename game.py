@@ -88,6 +88,27 @@ def update_player(player, delta, walls):
     player.centerx += player.velocity[0] * delta
     player.centery += player.velocity[1] * delta
 
+def update_enemy(enemy, delta, walls):
+
+    enemy.velocity = (enemy.velocity[0] + enemy.walk_acc * delta,
+                       enemy.velocity[1])
+    # Gravity
+    enemy.velocity = (enemy.velocity[0], enemy.velocity[1] + 500 * delta)
+
+    max_speed = enemy.max_walk_speed
+    clamped_horizontal_speed = clamp(enemy.velocity[0], -max_speed, max_speed)
+    enemy.velocity = (clamped_horizontal_speed, enemy.velocity[1])
+
+    enemy.centerx += enemy.velocity[0] * delta
+    enemy.centery += enemy.velocity[1] * delta
+
+    for wall in walls:
+        enemy_vel, wall_vel, overlap = solve_rect_overlap(enemy,
+                                                           wall,
+                                                           enemy.velocity,
+                                                           mass_b=0,
+                                                           bounce=0.1)
+        enemy.velocity = enemy_vel
 
 def draw_player(player):
     window = pg.display.get_surface()
@@ -112,7 +133,7 @@ levels = [
 #        #
 #        #
 #        #
-#SB X E B#
+#SB XYE B#
 ##########
 """,
 """
@@ -158,12 +179,19 @@ def parse_level(level_string):
                 # It's a Barr
                 k = (r[0], r[1]+GRID_SIZE*0.85, r[2], r[3])
                 barrs.append(k)
-            elif c == "X":
+            elif c in "XY":
                 # It's an enemy
                 enemy = Enemy()
                 enemy.centerx = r[0] + GRID_SIZE/2
                 enemy.centery = r[1] + GRID_SIZE/2
                 enemies.append(enemy)
+                # Enemies go left or right
+                if c == "X":
+                    enemy.face_left = True
+                    enemy.velocity = (-1, 0)
+                if c == "Y":
+                    enemy.face_left = False
+                    enemy.velocity = (1, 0)
             elif c == "S":
                 # It's the start
                 start = (x, y)
@@ -204,7 +232,7 @@ def update():
         draw_player(player)
 
         for enemy in enemies:
-            # TODO: update_enemy (movement)
+            update_enemy(enemy, delta(), walls)
             draw_enemy(enemy)
             _, depth = overlap_data(player, enemy)
             if depth > 0:
