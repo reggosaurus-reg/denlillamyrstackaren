@@ -4,8 +4,6 @@ from dataclasses import dataclass
 # Asset dictionary for holding all your assets.
 assets = {}
 
-face_left = False
-
 def clamp(val, low, high):
     return min(max(val, low), high)
 
@@ -21,6 +19,8 @@ class Player:
 
     walk_acc = 1000.0
     jump_vel = 250
+
+    face_left = False
 
     max_walk_speed = 100
     slow_down = 0.01
@@ -41,15 +41,15 @@ def player_is_on_ground(player, walls):
 def update_player(player, delta, walls):
     (left, right) = (key_down("a") or key_down(pg.K_LEFT),
                      key_down("d") or key_down(pg.K_RIGHT))
-    global face_left
-    face_left = left
 
     if left and not right:
         player.velocity = (player.velocity[0] - player.walk_acc * delta,
                            player.velocity[1])
+        player.face_left = True
     elif right and not left:
         player.velocity = (player.velocity[0] + player.walk_acc * delta,
                            player.velocity[1])
+        player.face_left = False
     else:
         # Yes, this is supposed to be an exponent.
         player.velocity = (player.velocity[0] * (player.slow_down ** delta),
@@ -72,7 +72,7 @@ def update_player(player, delta, walls):
 def draw_player(player):
     window = pg.display.get_surface()
     img = assets["myra"]
-    if face_left:
+    if player.face_left:
         img = pg.transform.flip(img, True, False)
     draw_transformed(img, (player.centerx, player.centery), (0.1, 0.1))
 
