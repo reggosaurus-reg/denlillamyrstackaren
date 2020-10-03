@@ -51,7 +51,7 @@ def update_player(player, delta):
 
 def draw_player(player):
     window = pg.display.get_surface()
-    draw_transformed(assets["teapot"], (player.centerx, player.centery))
+    draw_transformed(assets["myra"], (player.centerx, player.centery), (0.1, 0.1))
 
 
 levels = [
@@ -121,6 +121,8 @@ def init():
     
     assets["barr"] = pg.image.load("res/barr.png")
 
+    assets["myra"] = pg.image.load("res/myra.png")
+
     # Load sounds here
     assets["plong"] = pg.mixer.Sound("res/plong.wav")
 
@@ -138,6 +140,7 @@ def update():
 
     # Main update loop
     while True:
+        clear_screen(pg.Color(170, 180, 255))
         update_player(player, delta())
         draw_player(player)
 
