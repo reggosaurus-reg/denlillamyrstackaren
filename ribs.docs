@@ -1,0 +1,320 @@
+# Notes about RIBS
+Ribs is super small and easy to use collection of functions to help make pygame
+easier to work with. This includes things like drawing images in a single
+function, handling user input, and a few other things.
+
+If you want do do something in your game but can't find a suitable function,
+you may want use pygame directly. All documentation for pygame can be found at
+<a href="https://www.pygame.org/docs/">https://www.pygame.org/docs/</a>
+
+Also note that not everything is documented, if it's not documented you
+probably don't have to care about it.
+
+# Keyword and default arguments
+
+Some of the functions in ribs use a Python feature you may not have come
+across: default arguments. These allow you to only specify a few of the
+arguments to a function, and leave the rest. For example, the definition of
+<code>draw_transformed</code> looks like this:
+
+<code><span class="fn_name">draw_transformed</span><span class="paren">( </span><span class="arg">img</span><span class="comma">, </span><span class="arg">position</span><span class="comma">, </span><span class="arg">scale</span><span class="eq">=</span><span class="default_arg">(1.,  1.)</span><span class="comma">, </span><span class="arg">degrees</span><span class="eq">=</span><span class="default_arg">0</span><span class="paren"> )</span></code>
+
+The <code class='default_arg'>=x</code> part of the <code>scale</code> and <code>degrees</code> mean that you can call the function as one of
+
+!--code
+draw_transformed( img, (100, 100)) # Default scale and degrees
+draw_transformed( img, (100, 100), (2, 2)) # Scale up by 2, leave degrees unchanged
+draw_transformed( img, (100, 100), (2, 2), 90) # Scale up by 2, rotate by 90 degrees
+--!
+You can also specify one of many arguments by typing out its name. This is useful if you want
+to leave the first argument as default, but change another
+
+!--code
+draw_transformed( img, (100, 100), , degrees = 90) # Rotate 90 degrees, default scale
+--!
+
+
+# `key_down(key)`
+Takes a key, that's either a keycode or a character, and returns true if that key is held.
+
+!--params
+[key] A string with the character or keycode on the form (`pg.K_****`) of the button to check.
+--!
+<p>
+For a list of keycodes, see the table in the <a href="https://www.pygame.org/docs/ref/key.html?highlight=key#pygame.key.key_code">pygame documentation</a>
+</p>
+
+## ex
+!--code
+if key_down("a"):
+    print("COWABUNGA")
+--!
+This code would print "COWABUNGA" to the console while the "a" button is held.
+
+## ex
+!--code
+if key_down(pg.K_LEFT):
+    print("Move left")
+--!
+This code would print "Move left" to the console while the left arrow key is held.
+
+# `key_released(key)`
+Takes a key, that's either a keycode or a character and returns true if the key was released this frame. 
+
+!--params
+[key] A string with the character or keycode on the form (`pg.K_****`) of the button to check.
+--!
+<p>
+For a list of keycodes, see the table in the <a href="https://www.pygame.org/docs/ref/key.html?highlight=key#pygame.key.key_code">pygame documentation</a>
+</p>
+
+## ex
+!--code
+if key_released("a"):
+    print("hold longer maybe?")
+--!
+This code would print "hold longer maybe?" to the console when the "a" button was released.
+
+# `key_pressed(key)`
+Takes a key, that's either a keycode or a character, and returns true if that key was pressed this frame.
+!--params
+[key] A string with the character or keycode on the form (`pg.K_****`) of the button to check.
+--!
+<p>
+For a list of keycodes, see the table in the <a href="https://www.pygame.org/docs/ref/key.html?highlight=key#pygame.key.key_code">pygame documentation</a>
+</p>
+
+## ex
+!--code
+if key_pressed(pg.K_SPACE):
+    print("JUMP")
+--!
+This code would print "JUMP" to the console when the spacebar is pressed, and only that frame.
+
+# `draw_transformed(img, position, scale=(1., 1.), degrees=0)`
+Draws a sprite centered around `position` scaled by `scale` and rotated
+clockwise `degrees`. The position to draw the sprite is given in pixels
+relative to the top left corner of the screen.
+<p>
+The <code>img</code> argument is an image object loaded by
+<code>pg.image.load</code>. Note that if you want to draw lots of images, it is
+not a good idea to re-load the images every frame. Instead, load images into a
+variable in the <code>init</code> function and do the drawing in
+<code>update</code>
+</p>
+!--params
+[img] The image to be used as a sprite.
+[position] The center position of the sprite.
+[scale] A scale factor to apply. (Optional)
+[degrees] Rotate the sprite. (Optional)
+--!
+
+## ex
+!--code
+assets["teapot"] = pg.image.load("teapot.png")
+draw_transformed(assets["teapot"], (100, 100))
+--!
+This code would draw the "teapot.png" image (given that you have one) 100
+pixels to the right of the left edge, and 100 pixels below the top edge of the
+window.
+
+## ex
+!--code
+assets["teapot"] = pg.image.load("teapot.png")
+draw_transformed(assets["teapot"], (100, 100),
+                 (1, 0.5), time)
+--!
+This code would draw the "teapot.png" image (given that you have one),
+and given that `time` was the "time since the program started", this
+would draw a sprite at (100, 100) shrunk to half size along the y axis, rotating
+around it's center.
+
+# `draw_text(text, position, size=32, color=pg.Color(255, 255, 255), font=None)`
+Draw `text` at `position`, which is given in pixels from the top left corner.
+Optional arguments include `size` given in points, `color` which is
+a standard pygame color and `font` which is a string. To get a list of
+available fonts, use `pg.font.get_fonts()`.
+!--params
+[text] The text to be drawn.
+[position] The top left corner of the text, in pixel coordinates.
+[size] The font size in points. (Optional)
+[color] The color of the text. (Optional)
+[font] Name of the font to use. (Optional)
+--!
+
+## ex
+!--code
+draw_text("Level: 1", (0, 0))
+--!
+Draw "Level: 1" in the top left corner of the screen.
+
+## ex
+!--code
+draw_text("Level: 2", (0, 0), size=100)
+--!
+Draw "Level: 2" with large letters in the top left corner of the screen.
+
+## ex
+!--code
+draw_text("Level: 3", (0, 0), color=pg.Color(255, 0, 0))
+--!
+Draw "Level: 3" in red in the top left corner of the screen.
+
+## ex
+!--code
+draw_text("Level: 4", (0, 0), font="Times New Roman")
+--!
+Draw "Level: 4" in the top left corner of the screen using the 'Times New Roman' font.
+Note that only fonts installed on the system can be used. Use
+`pg.font.get_fonts()` to get a list of fonts installed on your system.
+
+## ex
+!--code
+draw_text("Level: 5", (1000, 1000), 50, pg.Color(0, 255, 0), "Comic Sans MS")
+--!
+Draws the text "Level: 5", where the top of the "L" is at the coordinates
+(1000, 1000), a font size of 50, colored with green (you could use a swatch
+here), all written in Comic Sans.
+
+# `overlap_data(a, b)`
+Returns the axis that points from a to b, and the depth of the collision.
+If the depth is negative it means they are far away from overlapping.
+
+Note that this function is not super important, you probably want
+to use `solve_rect_overlap(a, b)`
+
+!--params
+[a] A `pg.Rect(minx, miny, width, height)`.
+[b] A `pg.Rect(minx, miny, width, height)`.
+--!
+
+## ex
+!--code
+rect_a = pg.Rect(200, 200, 100, 100)
+rect_b = pg.Rect(250, 250, 50, 100)
+normal, depth = overlap_data(rect_a, rect_b)
+overlap = depth > 0
+print(overlap)
+--!
+This code would print "True" since the rectangles overlap, and thus
+the depth of their overlap is positive.
+
+# `solve_rect_overlap(a, b, vel_a=(0, 0), vel_b=(0, 0), mass_a=1, mass_b=1, bounce=0)`
+This function checks if `a` and `b` overlap, if they do the collision
+is solved and two new rectangles moved out of eachother along the shortest
+collision vector are returned along with their velocities.
+
+Note that `a` and `b` are modified inplace, and might be changed after
+calling this function.
+
+!--params
+[a] A `pg.Rect(minx, miny, width, height)`.
+[b] A `pg.Rect(minx, miny, width, height)`.
+[vel_a] The velocity of `a`, given as a tuple.
+[vel_b] The velocity of `b`, given as a tuple.
+[mass_a] The mass of `a`. 0 mass means it's static and immovable.
+[mass_b] The mass of `b`. 0 mass means it's static and immovable.
+[bounce] How bouncy the collision should be. Values higher than 1
+         will introduce more energy into the system and might
+         cause glitches. Values lower than 0 don't make sense.
+--!
+
+## ex
+!--code
+rect_a = pg.Rect(200, 200, 100, 100)
+vel_a = (0, 1000)
+rect_b = pg.Rect(250, 250, 50, 100)
+vel_b = (0, 0)
+vel_a, vel_b, hit = solve_rect_overlap(rect_a,\
+                                       rect_b,\
+                                       vel_a,\
+                                       vel_b,\
+                                       bounce=1.0)
+--!
+This code will create a collision between `rect_a` and `rect_b`. The collision will send
+rect_b flying since all the energy from `rect _a` is transferred to `rect_b`.
+
+# `set_screen_size(width, height)`
+Sets new dimensions for the screen that renders the game.
+!--params
+[width]  The new width of the screen in pixels.
+[height] The new height of the screen in pixels.
+--!
+
+## ex
+!--code
+set_screen_size(1337, 420)
+--!
+This line of code would set the window's dimensions to 1337 pixels wide and 420
+pixels high.
+
+# `set_frame_rate(fps)`
+Updates the frame rate limit to the supplied FPS, if set to 0 there will be no limit.
+!--params
+[fps] The frame rate to limit to, 0 means no limit.
+--!
+
+## ex
+!--code
+set_frame_rate(0)
+--!
+This line of code would unlimit the frame rate.
+
+## ex
+!--code
+set_frame_rate(60)
+--!
+This line of code would limit the frame rate to 60 frames per second.
+
+# `time()`
+Return the number of seconds passed since the start of the game, or the latest restart.
+
+# `delta()`
+Return the number of seconds passed between this frame and the previous.
+The number is usually quite small (~0.16).
+
+# `restart()`
+Restart the game and reset all state from the engine's side of things.
+Note that it might not clear your stored state, which might cause the game
+to behave strangely when restarting.
+
+Note that calling `restart()` won't terminate the "run".
+
+# `start_game(init, update)`
+The code that calls into the `ribs.py` and sets up everything that needs to be
+set up. You just give in your function.
+
+If you're using the supplied template, you don't need to worry about this.
+
+!--params
+[init] The initalization function, this one is only called once. Takes no arguments.
+[update] The update function, expected to be an iterator that returns when the game
+          is finished. Takes no arguments.
+--!
+
+## ex
+!--code
+def init():
+    print("Initialized, only called once!")
+
+def update():
+    print("Called for every start and restart!")
+    while True:
+        print("Update!")
+        yield
+
+start_game(init, update)
+--!
+This code would create a game that prints the following:
+
+<pre style="font-size:1.2em">
+Initialized, only called once!
+I'm called for every start and restart!
+Update!
+Update!
+Update!
+.
+.
+.
+</pre>
+

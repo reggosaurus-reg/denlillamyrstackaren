@@ -1,0 +1,588 @@
+<!--- This file is auto generated, please do not edit --><html><head><title>Documentation</title><style>body {
+    font-family: sans-serif;
+}
+
+main {
+    max-width: 100%;
+}
+
+main > * {
+    margin: 0px auto;
+    max-width: 960px;
+}
+
+code {
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.swatch {
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    border: 1px solid black;
+    vertical-align: text-bottom;
+}
+
+.func {
+    margin-top: 2.0em;
+}
+
+.args {
+    border-left: 2px solid #EAE;
+    padding-left: 1em;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+}
+
+.args td {
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+}
+
+.func .title {
+    margin-bottom: 0.1em;
+}
+
+.docstr {
+    margin-top: 0.5em;
+    margin-left: 2em;
+}
+
+.docstr .header {
+    font-weight: 700;
+    padding: 0.4em;
+    padding-left: 0.5em;
+    margin-bottom: 0.6em 0em;
+}
+
+.docstr .header, .docstr .content {
+    padding: 0.1em;
+    padding-left: 0.5em;
+}
+
+.Doc {
+}
+
+.Ex {
+}
+
+/*
+.docstr {
+    background-color: #EEE;
+}
+*/
+
+.explain .header {
+    border-left: 4px #267711 solid;
+}
+
+.example .header {
+    border-left: 4px #2e1177 solid;
+}
+
+.toc h1 {
+    font-size: 1.3em;
+}
+.toc h2 {
+    font-size: 1.2em;
+    margin-left: 1em;
+}
+.toc a {
+    margin-left: 2em;
+    text-decoration: none;
+    color: #2000ff;
+    font-family: monospace;
+    font-size: 1.2em;
+    width: 100%;
+    display: inline-block;
+    padding: 4px;
+}
+.toc a:hover {
+    background-color: #e1e1e1
+}
+
+.highlight {
+    font-family: "Source Code Pro",monospace;
+    font-size: 1.2em;
+    background-color: #eee;
+    padding: 10px;
+    margin: 10px 0px;
+}
+/*Partial css reset*/
+.highlight pre {
+    padding: 0px;
+    margin: 0px;
+}
+
+.args code {
+    font-family: "Source Code Pro",monospace;
+    font-size: 1.0em;
+}
+
+footer {
+    text-align: center;
+    padding: 2em;
+    border-top: 1px solid #e1e1e1;
+    color: #999;
+}
+
+.heart {
+    color: #C11;
+    animation-direction: alternate;
+    animation-name: heart-anim;
+    animation-duration: 2s;
+}
+
+svg.logo {
+    max-width: 10em;
+    width: calc(100% - 3em);
+    padding: 1.5em;
+    padding-bottom: 0px;
+    margin: auto;
+}
+
+@keyframes heart-anim {
+    from { color: #999; };
+    to { color: #F33; };
+}
+
+@media screen and (min-width: 960px) {
+    .toc {
+        width: 300px;
+        position: fixed;
+        overflow-y: auto;
+        overflow-x: hidden;
+        background-color: white;
+        z-index: 1;
+        top: 0;
+        max-height: 100vh;
+        border-right: 2px #e6e6e6 solid;
+    }
+    #lithekod, #pygame {
+        margin: 0px auto;
+    }
+
+    /*If the TOC is floating, don't put stuff underneath*/
+    main {
+        padding-left: 315px;
+    }
+
+    .toc {
+        height: 100vh;
+    }
+}
+
+@media screen and (min-width: 720px) {
+    .toc {
+        width: 240px;
+        position: fixed;
+        overflow-y: auto;
+        overflow-x: hidden;
+        background-color: white;
+        z-index: 1;
+        top: 0;
+        max-height: 100vh;
+        border-right: 2px #e6e6e6 solid;
+    }
+    #lithekod, #pygame {
+        margin: 0px auto;
+    }
+
+    /*If the TOC is floating, don't put stuff underneath*/
+    main {
+        padding-left: 250px;
+    }
+
+    .toc {
+        height: 100vh;
+    }
+}
+
+/* Function name highlighting */
+.paren, .comma {
+    color: #808080;
+}
+
+.eq, .default_arg {
+    color: #508157;
+}
+
+.arg {
+    color: #ad448e;
+}
+pre { line-height: 125%; margin: 0; }
+td.linenos pre { color: #000000; background-color: #f0f0f0; padding: 0 5px 0 5px; }
+span.linenos { color: #000000; background-color: #f0f0f0; padding: 0 5px 0 5px; }
+td.linenos pre.special { color: #000000; background-color: #ffffc0; padding: 0 5px 0 5px; }
+span.linenos.special { color: #000000; background-color: #ffffc0; padding: 0 5px 0 5px; }
+.hll { background-color: #ffffcc }
+.c { color: #408080; font-style: italic } /* Comment */
+.err { border: 1px solid #FF0000 } /* Error */
+.k { color: #008000; font-weight: bold } /* Keyword */
+.o { color: #666666 } /* Operator */
+.ch { color: #408080; font-style: italic } /* Comment.Hashbang */
+.cm { color: #408080; font-style: italic } /* Comment.Multiline */
+.cp { color: #BC7A00 } /* Comment.Preproc */
+.cpf { color: #408080; font-style: italic } /* Comment.PreprocFile */
+.c1 { color: #408080; font-style: italic } /* Comment.Single */
+.cs { color: #408080; font-style: italic } /* Comment.Special */
+.gd { color: #A00000 } /* Generic.Deleted */
+.ge { font-style: italic } /* Generic.Emph */
+.gr { color: #FF0000 } /* Generic.Error */
+.gh { color: #000080; font-weight: bold } /* Generic.Heading */
+.gi { color: #00A000 } /* Generic.Inserted */
+.go { color: #888888 } /* Generic.Output */
+.gp { color: #000080; font-weight: bold } /* Generic.Prompt */
+.gs { font-weight: bold } /* Generic.Strong */
+.gu { color: #800080; font-weight: bold } /* Generic.Subheading */
+.gt { color: #0044DD } /* Generic.Traceback */
+.kc { color: #008000; font-weight: bold } /* Keyword.Constant */
+.kd { color: #008000; font-weight: bold } /* Keyword.Declaration */
+.kn { color: #008000; font-weight: bold } /* Keyword.Namespace */
+.kp { color: #008000 } /* Keyword.Pseudo */
+.kr { color: #008000; font-weight: bold } /* Keyword.Reserved */
+.kt { color: #B00040 } /* Keyword.Type */
+.m { color: #666666 } /* Literal.Number */
+.s { color: #BA2121 } /* Literal.String */
+.na { color: #7D9029 } /* Name.Attribute */
+.nb { color: #008000 } /* Name.Builtin */
+.nc { color: #0000FF; font-weight: bold } /* Name.Class */
+.no { color: #880000 } /* Name.Constant */
+.nd { color: #AA22FF } /* Name.Decorator */
+.ni { color: #999999; font-weight: bold } /* Name.Entity */
+.ne { color: #D2413A; font-weight: bold } /* Name.Exception */
+.nf { color: #0000FF } /* Name.Function */
+.nl { color: #A0A000 } /* Name.Label */
+.nn { color: #0000FF; font-weight: bold } /* Name.Namespace */
+.nt { color: #008000; font-weight: bold } /* Name.Tag */
+.nv { color: #19177C } /* Name.Variable */
+.ow { color: #AA22FF; font-weight: bold } /* Operator.Word */
+.w { color: #bbbbbb } /* Text.Whitespace */
+.mb { color: #666666 } /* Literal.Number.Bin */
+.mf { color: #666666 } /* Literal.Number.Float */
+.mh { color: #666666 } /* Literal.Number.Hex */
+.mi { color: #666666 } /* Literal.Number.Integer */
+.mo { color: #666666 } /* Literal.Number.Oct */
+.sa { color: #BA2121 } /* Literal.String.Affix */
+.sb { color: #BA2121 } /* Literal.String.Backtick */
+.sc { color: #BA2121 } /* Literal.String.Char */
+.dl { color: #BA2121 } /* Literal.String.Delimiter */
+.sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */
+.s2 { color: #BA2121 } /* Literal.String.Double */
+.se { color: #BB6622; font-weight: bold } /* Literal.String.Escape */
+.sh { color: #BA2121 } /* Literal.String.Heredoc */
+.si { color: #BB6688; font-weight: bold } /* Literal.String.Interpol */
+.sx { color: #008000 } /* Literal.String.Other */
+.sr { color: #BB6688 } /* Literal.String.Regex */
+.s1 { color: #BA2121 } /* Literal.String.Single */
+.ss { color: #19177C } /* Literal.String.Symbol */
+.bp { color: #008000 } /* Name.Builtin.Pseudo */
+.fm { color: #0000FF } /* Name.Function.Magic */
+.vc { color: #19177C } /* Name.Variable.Class */
+.vg { color: #19177C } /* Name.Variable.Global */
+.vi { color: #19177C } /* Name.Variable.Instance */
+.vm { color: #19177C } /* Name.Variable.Magic */
+.il { color: #666666 } /* Literal.Number.Integer.Long */</style></head><body><div class='toc'><svg class='logo' viewBox='0 0 112 45'><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+   <!--
+   width="112mm"
+   height="45mm"
+   -->
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   viewBox="0 0 112 45"
+   version="1.1"
+   id="svg8"
+   inkscape:version="1.0.1 (3bc2e813f5, 2020-09-07)"
+   sodipodi:docname="ribs-logo.svg">
+  <defs
+     id="defs2">
+    <rect
+       x="60.059013"
+       y="17.841997"
+       width="97.661217"
+       height="48.520496"
+       id="rect909" />
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="1.4"
+     inkscape:cx="408.05049"
+     inkscape:cy="191.36997"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     inkscape:document-rotation="0"
+     showgrid="false"
+     inkscape:window-width="1890"
+     inkscape:window-height="1030"
+     inkscape:window-x="14"
+     inkscape:window-y="34"
+     inkscape:window-maximized="1"
+     inkscape:pagecheckerboard="true" />
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <path
+       id="path837"
+       style="fill:#d9cbac;fill-opacity:1;stroke:none;stroke-width:1.265;stroke-linecap:round;stroke-linejoin:round;paint-order:stroke fill markers"
+       d="M 55.889823,1.0997791 A 55.2798,24.234047 0 0 0 0.70146013,25.333958 55.2798,24.234047 0 0 0 22.139428,44.49558 50.825849,22.895351 0 0 1 5.936281,27.734329 50.825849,22.895351 0 0 1 56.76212,4.8390859 50.825849,22.895351 0 0 1 107.58796,27.734329 50.825849,22.895351 0 0 1 98.317723,40.916472 55.2798,24.234047 0 0 0 111.26112,25.333958 55.2798,24.234047 0 0 0 55.981289,1.0997791 a 55.2798,24.234047 0 0 0 -0.09147,0 z"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300" />
+    <path
+       id="path837-3"
+       style="fill:#d9cbac;fill-opacity:1;stroke:none;stroke-width:1.265;stroke-linecap:round;stroke-linejoin:round;paint-order:stroke fill markers"
+       d="M 56.792364,8.2913531 A 37.003611,20.378263 0 0 0 19.849956,28.669728 37.003611,20.378263 0 0 0 34.200265,44.782621 34.022192,19.252562 0 0 1 23.35408,30.688187 34.022192,19.252562 0 0 1 57.376274,11.435715 a 34.022192,19.252562 0 0 1 34.02218,19.252472 34.022192,19.252562 0 0 1 -6.20538,11.084783 37.003611,20.378263 0 0 0 8.66415,-13.103242 37.003611,20.378263 0 0 0 -37.00363,-20.3783749 37.003611,20.378263 0 0 0 -0.0613,0 z"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300" />
+    <path
+       id="path901"
+       style="fill:#d9cbac;fill-opacity:1;stroke:none;stroke-width:1.265;stroke-linecap:round;stroke-linejoin:round;paint-order:stroke fill markers"
+       d="m 56.815374,14.74684 a 23.098357,13.168231 0 0 0 -23.060156,13.168302 23.098357,13.168231 0 0 0 8.957736,10.411991 21.237298,12.440814 0 0 1 -6.770395,-9.107683 21.237298,12.440814 0 0 1 21.237295,-12.440755 21.237298,12.440814 0 0 1 21.2373,12.440755 21.237298,12.440814 0 0 1 -3.87352,7.162877 23.098357,13.168231 0 0 0 5.40833,-8.467185 23.098357,13.168231 0 0 0 -23.09837,-13.168302 23.098357,13.168231 0 0 0 -0.0383,0 z"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300" />
+    <path
+       id="path903"
+       style="fill:#d9cbac;fill-opacity:1;stroke:none;stroke-width:1.265;stroke-linecap:round;stroke-linejoin:round;paint-order:stroke fill markers"
+       d="m 56.827324,20.750734 a 15.876904,6.4625744 0 0 0 -15.850648,6.462609 15.876904,6.4625744 0 0 0 6.157196,5.109894 14.597685,6.1055799 0 0 1 -4.653704,-4.469779 14.597685,6.1055799 0 0 1 14.597686,-6.105551 14.597685,6.1055799 0 0 1 14.59768,6.105551 14.597685,6.1055799 0 0 1 -2.6625,3.515326 15.876904,6.4625744 0 0 0 3.71747,-4.155441 15.876904,6.4625744 0 0 0 -15.87691,-6.462609 15.876904,6.4625744 0 0 0 -0.0263,0 z"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300" />
+    <path
+       style="fill:#d9cbac;fill-opacity:1;stroke:none;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 57.077854,21.747907 49.739716,3.1000311 65.138344,3.0391901 Z"
+       id="path905"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300" />
+    <text
+       xml:space="preserve"
+       id="text907"
+       style="font-size:10.5833px;line-height:1.25;font-family:'Comic Sans MS';-inkscape-font-specification:'Comic Sans MS';letter-spacing:0px;word-spacing:0px;white-space:pre;shape-inside:url(#rect909);fill:#453a1f;fill-opacity:1;stroke:none;stroke-width:0.298711;stroke-opacity:1;"
+       transform="matrix(3.3477151,0,0,3.3477151,-183.65043,-54.678243)"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300"><tspan
+         x="60.058594"
+         y="27.205537"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'DejaVu Sans';-inkscape-font-specification:'DejaVu Sans';fill:#453a1f;fill-opacity:1;stroke:none;stroke-width:0.298711;stroke-opacity:1">Ribs</tspan></tspan></text>
+  </g>
+</svg>
+</svg><h2>Table of Contents</h2><a href='#Notes about RIBS'>Notes about RIBS</a><br><a href='#Keyword and default arguments'>Keyword and default arguments</a><br><a href='#&lt;code&gt;key_down'>key_down</a><br><a href='#&lt;code&gt;key_released'>key_released</a><br><a href='#&lt;code&gt;key_pressed'>key_pressed</a><br><a href='#&lt;code&gt;draw_transformed'>draw_transformed</a><br><a href='#&lt;code&gt;draw_text'>draw_text</a><br><a href='#&lt;code&gt;overlap_data'>overlap_data</a><br><a href='#&lt;code&gt;solve_rect_overlap'>solve_rect_overlap</a><br><a href='#&lt;code&gt;set_screen_size'>set_screen_size</a><br><a href='#&lt;code&gt;set_frame_rate'>set_frame_rate</a><br><a href='#&lt;code&gt;time'>time</a><br><a href='#&lt;code&gt;delta'>delta</a><br><a href='#&lt;code&gt;restart'>restart</a><br><a href='#&lt;code&gt;start_game'>start_game</a></div></div><main><h1>Snake Ribs</h1><p>A small and simple PyGame wrapper, for getting started quick and easy.</p><div id='lithekod'><div id='Notes about RIBS' class='func'><h2 class='title'>Notes about RIBS</h2><div class='docstr explain'><div class='header Description'>Description</div><div class='content'>Ribs is super small and easy to use collection of functions to help make pygame
+easier to work with. This includes things like drawing images in a single
+function, handling user input, and a few other things.
+</p><p>If you want do do something in your game but can't find a suitable function,
+you may want use pygame directly. All documentation for pygame can be found at
+<a href="https://www.pygame.org/docs/">https://www.pygame.org/docs/</a>
+</p><p>Also note that not everything is documented, if it's not documented you
+probably don't have to care about it.
+</p><p></p></div></div></div><div id='Keyword and default arguments' class='func'><h2 class='title'>Keyword and default arguments</h2><div class='docstr explain'><div class='header Description'>Description</div><div class='content'><p></p><p>Some of the functions in ribs use a Python feature you may not have come
+across: default arguments. These allow you to only specify a few of the
+arguments to a function, and leave the rest. For example, the definition of
+<code>draw_transformed</code> looks like this:
+</p><p><code><span class="fn_name">draw_transformed</span><span class="paren">( </span><span class="arg">img</span><span class="comma">, </span><span class="arg">position</span><span class="comma">, </span><span class="arg">scale</span><span class="eq">=</span><span class="default_arg">(1.,  1.)</span><span class="comma">, </span><span class="arg">degrees</span><span class="eq">=</span><span class="default_arg">0</span><span class="paren"> )</span></code>
+</p><p>The <code class='default_arg'>=x</code> part of the <code>scale</code> and <code>degrees</code> mean that you can call the function as one of
+</p><p><div class="highlight"><pre><span></span><span class="n">draw_transformed</span><span class="p">(</span> <span class="n">img</span><span class="p">,</span> <span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">))</span> <span class="c1"># Default scale and degrees</span>
+<span class="n">draw_transformed</span><span class="p">(</span> <span class="n">img</span><span class="p">,</span> <span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span> <span class="c1"># Scale up by 2, leave degrees unchanged</span>
+<span class="n">draw_transformed</span><span class="p">(</span> <span class="n">img</span><span class="p">,</span> <span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="mi">90</span><span class="p">)</span> <span class="c1"># Scale up by 2, rotate by 90 degrees</span>
+</pre></div>
+You can also specify one of many arguments by typing out its name. This is useful if you want
+to leave the first argument as default, but change another
+</p><p><div class="highlight"><pre><span></span><span class="n">draw_transformed</span><span class="p">(</span> <span class="n">img</span><span class="p">,</span> <span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">),</span> <span class="p">,</span> <span class="n">degrees</span> <span class="o">=</span> <span class="mi">90</span><span class="p">)</span> <span class="c1"># Rotate 90 degrees, default scale</span>
+</pre></div>
+</p><p></p><p></p></div></div></div><div id='<code>key_down' class='func'><h2 class='title'><span class='fn_name'>key_down</span><span class='paren'>( </span><span class='arg'>key</span><span class='paren'> )</span></h2><div class='docstr explain'><div class='header Description'>Description</div><div class='content'><p>Takes a key, that's either a keycode or a character, and returns true if that key is held.
+</p><p><table  class="args"><tr><td><code>key</code></td><td>A string with the character or keycode on the form (<code>pg.K_****</code>) of the button to check.</td></tr></table>
+<p>
+For a list of keycodes, see the table in the <a href="https://www.pygame.org/docs/ref/key.html?highlight=key#pygame.key.key_code">pygame documentation</a>
+</p>
+</p><p></p></div></div><div class='docstr example'><div class='header Example'>Example</div><div class='content'><p><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">key_down</span><span class="p">(</span><span class="s2">&quot;a&quot;</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;COWABUNGA&quot;</span><span class="p">)</span>
+</pre></div>
+This code would print "COWABUNGA" to the console while the "a" button is held.
+</p><p></p></div></div><div class='docstr example'><div class='header Example'>Example</div><div class='content'><p><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">key_down</span><span class="p">(</span><span class="n">pg</span><span class="o">.</span><span class="n">K_LEFT</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Move left&quot;</span><span class="p">)</span>
+</pre></div>
+This code would print "Move left" to the console while the left arrow key is held.
+</p><p></p></div></div></div><div id='<code>key_released' class='func'><h2 class='title'><span class='fn_name'>key_released</span><span class='paren'>( </span><span class='arg'>key</span><span class='paren'> )</span></h2><div class='docstr explain'><div class='header Description'>Description</div><div class='content'><p>Takes a key, that's either a keycode or a character and returns true if the key was released this frame. 
+</p><p><table  class="args"><tr><td><code>key</code></td><td>A string with the character or keycode on the form (<code>pg.K_****</code>) of the button to check.</td></tr></table>
+<p>
+For a list of keycodes, see the table in the <a href="https://www.pygame.org/docs/ref/key.html?highlight=key#pygame.key.key_code">pygame documentation</a>
+</p>
+</p><p></p></div></div><div class='docstr example'><div class='header Example'>Example</div><div class='content'><p><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">key_released</span><span class="p">(</span><span class="s2">&quot;a&quot;</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;hold longer maybe?&quot;</span><span class="p">)</span>
+</pre></div>
+This code would print "hold longer maybe?" to the console when the "a" button was released.
+</p><p></p></div></div></div><div id='<code>key_pressed' class='func'><h2 class='title'><span class='fn_name'>key_pressed</span><span class='paren'>( </span><span class='arg'>key</span><span class='paren'> )</span></h2><div class='docstr explain'><div class='header Description'>Description</div><div class='content'><p>Takes a key, that's either a keycode or a character, and returns true if that key was pressed this frame.
+<table  class="args"><tr><td><code>key</code></td><td>A string with the character or keycode on the form (<code>pg.K_****</code>) of the button to check.</td></tr></table>
+<p>
+For a list of keycodes, see the table in the <a href="https://www.pygame.org/docs/ref/key.html?highlight=key#pygame.key.key_code">pygame documentation</a>
+</p>
+</p><p></p></div></div><div class='docstr example'><div class='header Example'>Example</div><div class='content'><p><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">key_pressed</span><span class="p">(</span><span class="n">pg</span><span class="o">.</span><span class="n">K_SPACE</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;JUMP&quot;</span><span class="p">)</span>
+</pre></div>
+This code would print "JUMP" to the console when the spacebar is pressed, and only that frame.
+</p><p></p></div></div></div><div id='<code>draw_transformed' class='func'><h2 class='title'><span class='fn_name'>draw_transformed</span><span class='paren'>( </span><span class='arg'>img</span><span class='comma'>, </span><span class='arg'>position</span><span class='comma'>, </span><span class='arg'>scale</span><span class='eq'>=</span><span class='default_arg'>(1.,  1.)</span><span class='comma'>, </span><span class='arg'>degrees</span><span class='eq'>=</span><span class='default_arg'>0</span><span class='paren'> )</span></h2><div class='docstr explain'><div class='header Description'>Description</div><div class='content'><p>Draws a sprite centered around <code>position</code> scaled by <code>scale</code> and rotated
+clockwise <code>degrees</code>. The position to draw the sprite is given in pixels
+relative to the top left corner of the screen.
+<p>
+The <code>img</code> argument is an image object loaded by
+<code>pg.image.load</code>. Note that if you want to draw lots of images, it is
+not a good idea to re-load the images every frame. Instead, load images into a
+variable in the <code>init</code> function and do the drawing in
+<code>update</code>
+</p>
+<table  class="args"><tr><td><code>img</code></td><td>The image to be used as a sprite.</td></tr>
+<tr><td><code>position</code></td><td>The center position of the sprite.</td></tr>
+<tr><td><code>scale</code></td><td>A scale factor to apply. (Optional)</td></tr>
+<tr><td><code>degrees</code></td><td>Rotate the sprite. (Optional)</td></tr></table>
+</p><p></p></div></div><div class='docstr example'><div class='header Example'>Example</div><div class='content'><p><div class="highlight"><pre><span></span><span class="n">assets</span><span class="p">[</span><span class="s2">&quot;teapot&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pg</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;teapot.png&quot;</span><span class="p">)</span>
+<span class="n">draw_transformed</span><span class="p">(</span><span class="n">assets</span><span class="p">[</span><span class="s2">&quot;teapot&quot;</span><span class="p">],</span> <span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">))</span>
+</pre></div>
+This code would draw the "teapot.png" image (given that you have one) 100
+pixels to the right of the left edge, and 100 pixels below the top edge of the
+window.
+</p><p></p></div></div><div class='docstr example'><div class='header Example'>Example</div><div class='content'><p><div class="highlight"><pre><span></span><span class="n">assets</span><span class="p">[</span><span class="s2">&quot;teapot&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pg</span><span class="o">.</span><span class="n">image</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;teapot.png&quot;</span><span class="p">)</span>
+<span class="n">draw_transformed</span><span class="p">(</span><span class="n">assets</span><span class="p">[</span><span class="s2">&quot;teapot&quot;</span><span class="p">],</span> <span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">),</span>
+                 <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">),</span> <span class="n">time</span><span class="p">)</span>
+</pre></div>
+This code would draw the "teapot.png" image (given that you have one),
+and given that <code>time</code> was the "time since the program started", this
+would draw a sprite at (100, 100) shrunk to half size along the y axis, rotating
+around it's center.
+</p><p></p></div></div></div><div id='<code>draw_text' class='func'><h2 class='title'><span class='fn_name'>draw_text</span><span class='paren'>( </span><span class='arg'>text</span><span class='comma'>, </span><span class='arg'>position</span><span class='comma'>, </span><span class='arg'>size</span><span class='eq'>=</span><span class='default_arg'>32</span><span class='comma'>, </span><span class='arg'>color</span><span class='eq'>=</span><span class='default_arg'>pg.Color(255,  255,  255)</span><span class='comma'>, </span><span class='arg'>font</span><span class='eq'>=</span><span class='default_arg'>None</span><span class='paren'> )</span></h2><div class='docstr explain'><div class='header Description'>Description</div><div class='content'><p>Draw <code>text</code> at <code>position</code>, which is given in pixels from the top left corner.
+Optional arguments include <code>size</code> given in points, <code>color</code> which is
+a standard pygame color and <code>font</code> which is a string. To get a list of
+available fonts, use <code>pg.font.get_fonts()</code>.
+<table  class="args"><tr><td><code>text</code></td><td>The text to be drawn.</td></tr>
+<tr><td><code>position</code></td><td>The top left corner of the text, in pixel coordinates.</td></tr>
+<tr><td><code>size</code></td><td>The font size in points. (Optional)</td></tr>
+<tr><td><code>color</code></td><td>The color of the text. (Optional)</td></tr>
+<tr><td><code>font</code></td><td>Name of the font to use. (Optional)</td></tr></table>
+</p><p></p></div></div><div class='docstr example'><div class='header Example'>Example</div><div class='content'><p><div class="highlight"><pre><span></span><span class="n">draw_text</span><span class="p">(</span><span class="s2">&quot;Level: 1&quot;</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+</pre></div>
+Draw "Level: 1" in the top left corner of the screen.
+</p><p></p></div></div><div class='docstr example'><div class='header Example'>Example</div><div class='content'><p><div class="highlight"><pre><span></span><span class="n">draw_text</span><span class="p">(</span><span class="s2">&quot;Level: 2&quot;</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">size</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+</pre></div>
+Draw "Level: 2" with large letters in the top left corner of the screen.
+</p><p></p></div></div><div class='docstr example'><div class='header Example'>Example</div><div class='content'><p><div class="highlight"><pre><span></span><span class="n">draw_text</span><span class="p">(</span><span class="s2">&quot;Level: 3&quot;</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="n">pg</span><span class="o">.</span><span class="n">Color</span><span class="p">(</span><span class="mi">255</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+</pre></div>
+Draw "Level: 3" in red in the top left corner of the screen.
+</p><p></p></div></div><div class='docstr example'><div class='header Example'>Example</div><div class='content'><p><div class="highlight"><pre><span></span><span class="n">draw_text</span><span class="p">(</span><span class="s2">&quot;Level: 4&quot;</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">font</span><span class="o">=</span><span class="s2">&quot;Times New Roman&quot;</span><span class="p">)</span>
+</pre></div>
+Draw "Level: 4" in the top left corner of the screen using the 'Times New Roman' font.
+Note that only fonts installed on the system can be used. Use
+<code>pg.font.get_fonts()</code> to get a list of fonts installed on your system.
+</p><p></p></div></div><div class='docstr example'><div class='header Example'>Example</div><div class='content'><p><div class="highlight"><pre><span></span><span class="n">draw_text</span><span class="p">(</span><span class="s2">&quot;Level: 5&quot;</span><span class="p">,</span> <span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">1000</span><span class="p">),</span> <span class="mi">50</span><span class="p">,</span> <span class="n">pg</span><span class="o">.</span><span class="n">Color</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="s2">&quot;Comic Sans MS&quot;</span><span class="p">)</span>
+</pre></div>
+Draws the text "Level: 5", where the top of the "L" is at the coordinates
+(1000, 1000), a font size of 50, colored with green (you could use a swatch
+here), all written in Comic Sans.
+</p><p></p></div></div></div><div id='<code>overlap_data' class='func'><h2 class='title'><span class='fn_name'>overlap_data</span><span class='paren'>( </span><span class='arg'>a</span><span class='comma'>, </span><span class='arg'>b</span><span class='paren'> )</span></h2><div class='docstr explain'><div class='header Description'>Description</div><div class='content'><p>Returns the axis that points from a to b, and the depth of the collision.
+If the depth is negative it means they are far away from overlapping.
+</p><p>Note that this function is not super important, you probably want
+to use <code>solve_rect_overlap(a, b)</code>
+</p><p><table  class="args"><tr><td><code>a</code></td><td>A <code>pg.Rect(minx, miny, width, height)</code>.</td></tr>
+<tr><td><code>b</code></td><td>A <code>pg.Rect(minx, miny, width, height)</code>.</td></tr></table>
+</p><p></p></div></div><div class='docstr example'><div class='header Example'>Example</div><div class='content'><p><div class="highlight"><pre><span></span><span class="n">rect_a</span> <span class="o">=</span> <span class="n">pg</span><span class="o">.</span><span class="n">Rect</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">rect_b</span> <span class="o">=</span> <span class="n">pg</span><span class="o">.</span><span class="n">Rect</span><span class="p">(</span><span class="mi">250</span><span class="p">,</span> <span class="mi">250</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">normal</span><span class="p">,</span> <span class="n">depth</span> <span class="o">=</span> <span class="n">overlap_data</span><span class="p">(</span><span class="n">rect_a</span><span class="p">,</span> <span class="n">rect_b</span><span class="p">)</span>
+<span class="n">overlap</span> <span class="o">=</span> <span class="n">depth</span> <span class="o">&gt;</span> <span class="mi">0</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">overlap</span><span class="p">)</span>
+</pre></div>
+This code would print "True" since the rectangles overlap, and thus
+the depth of their overlap is positive.
+</p><p></p></div></div></div><div id='<code>solve_rect_overlap' class='func'><h2 class='title'><span class='fn_name'>solve_rect_overlap</span><span class='paren'>( </span><span class='arg'>a</span><span class='comma'>, </span><span class='arg'>b</span><span class='comma'>, </span><span class='arg'>vel_a</span><span class='eq'>=</span><span class='default_arg'>(0,  0)</span><span class='comma'>, </span><span class='arg'>vel_b</span><span class='eq'>=</span><span class='default_arg'>(0,  0)</span><span class='comma'>, </span><span class='arg'>mass_a</span><span class='eq'>=</span><span class='default_arg'>1</span><span class='comma'>, </span><span class='arg'>mass_b</span><span class='eq'>=</span><span class='default_arg'>1</span><span class='comma'>, </span><span class='arg'>bounce</span><span class='eq'>=</span><span class='default_arg'>0</span><span class='paren'> )</span></h2><div class='docstr explain'><div class='header Description'>Description</div><div class='content'><p>This function checks if <code>a</code> and <code>b</code> overlap, if they do the collision
+is solved and two new rectangles moved out of eachother along the shortest
+collision vector are returned along with their velocities.
+</p><p>Note that <code>a</code> and <code>b</code> are modified inplace, and might be changed after
+calling this function.
+</p><p><table  class="args"><tr><td><code>a</code></td><td>A <code>pg.Rect(minx, miny, width, height)</code>.</td></tr>
+<tr><td><code>b</code></td><td>A <code>pg.Rect(minx, miny, width, height)</code>.</td></tr>
+<tr><td><code>vel_a</code></td><td>The velocity of <code>a</code>, given as a tuple.</td></tr>
+<tr><td><code>vel_b</code></td><td>The velocity of <code>b</code>, given as a tuple.</td></tr>
+<tr><td><code>mass_a</code></td><td>The mass of <code>a</code>. 0 mass means it's static and immovable.</td></tr>
+<tr><td><code>mass_b</code></td><td>The mass of <code>b</code>. 0 mass means it's static and immovable.</td></tr>
+<tr><td><code>bounce</code></td><td>How bouncy the collision should be. Values higher than 1
+         will introduce more energy into the system and might
+         cause glitches. Values lower than 0 don't make sense.</td></tr></table>
+</p><p></p></div></div><div class='docstr example'><div class='header Example'>Example</div><div class='content'><p><div class="highlight"><pre><span></span><span class="n">rect_a</span> <span class="o">=</span> <span class="n">pg</span><span class="o">.</span><span class="n">Rect</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">vel_a</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
+<span class="n">rect_b</span> <span class="o">=</span> <span class="n">pg</span><span class="o">.</span><span class="n">Rect</span><span class="p">(</span><span class="mi">250</span><span class="p">,</span> <span class="mi">250</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">vel_b</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">vel_a</span><span class="p">,</span> <span class="n">vel_b</span><span class="p">,</span> <span class="n">hit</span> <span class="o">=</span> <span class="n">solve_rect_overlap</span><span class="p">(</span><span class="n">rect_a</span><span class="p">,</span>\
+                                       <span class="n">rect_b</span><span class="p">,</span>\
+                                       <span class="n">vel_a</span><span class="p">,</span>\
+                                       <span class="n">vel_b</span><span class="p">,</span>\
+                                       <span class="n">bounce</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span>
+</pre></div>
+This code will create a collision between <code>rect_a</code> and <code>rect_b</code>. The collision will send
+rect_b flying since all the energy from <code>rect _a</code> is transferred to <code>rect_b</code>.
+</p><p></p></div></div></div><div id='<code>set_screen_size' class='func'><h2 class='title'><span class='fn_name'>set_screen_size</span><span class='paren'>( </span><span class='arg'>width</span><span class='comma'>, </span><span class='arg'>height</span><span class='paren'> )</span></h2><div class='docstr explain'><div class='header Description'>Description</div><div class='content'><p>Sets new dimensions for the screen that renders the game.
+<table  class="args"><tr><td><code>width</code></td><td>The new width of the screen in pixels.</td></tr>
+<tr><td><code>height</code></td><td>The new height of the screen in pixels.</td></tr></table>
+</p><p></p></div></div><div class='docstr example'><div class='header Example'>Example</div><div class='content'><p><div class="highlight"><pre><span></span><span class="n">set_screen_size</span><span class="p">(</span><span class="mi">1337</span><span class="p">,</span> <span class="mi">420</span><span class="p">)</span>
+</pre></div>
+This line of code would set the window's dimensions to 1337 pixels wide and 420
+pixels high.
+</p><p></p></div></div></div><div id='<code>set_frame_rate' class='func'><h2 class='title'><span class='fn_name'>set_frame_rate</span><span class='paren'>( </span><span class='arg'>fps</span><span class='paren'> )</span></h2><div class='docstr explain'><div class='header Description'>Description</div><div class='content'><p>Updates the frame rate limit to the supplied FPS, if set to 0 there will be no limit.
+<table  class="args"><tr><td><code>fps</code></td><td>The frame rate to limit to, 0 means no limit.</td></tr></table>
+</p><p></p></div></div><div class='docstr example'><div class='header Example'>Example</div><div class='content'><p><div class="highlight"><pre><span></span><span class="n">set_frame_rate</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+This line of code would unlimit the frame rate.
+</p><p></p></div></div><div class='docstr example'><div class='header Example'>Example</div><div class='content'><p><div class="highlight"><pre><span></span><span class="n">set_frame_rate</span><span class="p">(</span><span class="mi">60</span><span class="p">)</span>
+</pre></div>
+This line of code would limit the frame rate to 60 frames per second.
+</p><p></p></div></div></div><div id='<code>time' class='func'><h2 class='title'><span class='fn_name'>time</span><span class='paren'>( </span><span class='paren'> )</span></h2><div class='docstr explain'><div class='header Description'>Description</div><div class='content'><p>Return the number of seconds passed since the start of the game, or the latest restart.
+</p><p></p></div></div></div><div id='<code>delta' class='func'><h2 class='title'><span class='fn_name'>delta</span><span class='paren'>( </span><span class='paren'> )</span></h2><div class='docstr explain'><div class='header Description'>Description</div><div class='content'><p>Return the number of seconds passed between this frame and the previous.
+The number is usually quite small (~0.16).
+</p><p></p></div></div></div><div id='<code>restart' class='func'><h2 class='title'><span class='fn_name'>restart</span><span class='paren'>( </span><span class='paren'> )</span></h2><div class='docstr explain'><div class='header Description'>Description</div><div class='content'><p>Restart the game and reset all state from the engine's side of things.
+Note that it might not clear your stored state, which might cause the game
+to behave strangely when restarting.
+</p><p>Note that calling <code>restart()</code> won't terminate the "run".
+</p><p></p></div></div></div><div id='<code>start_game' class='func'><h2 class='title'><span class='fn_name'>start_game</span><span class='paren'>( </span><span class='arg'>init</span><span class='comma'>, </span><span class='arg'>update</span><span class='paren'> )</span></h2><div class='docstr explain'><div class='header Description'>Description</div><div class='content'><p>The code that calls into the <code>ribs.py</code> and sets up everything that needs to be
+set up. You just give in your function.
+</p><p>If you're using the supplied template, you don't need to worry about this.
+</p><p><table  class="args"><tr><td><code>init</code></td><td>The initalization function, this one is only called once. Takes no arguments.</td></tr>
+<tr><td><code>update</code></td><td>The update function, expected to be an iterator that returns when the game
+          is finished. Takes no arguments.</td></tr></table>
+</p><p></p></div></div><div class='docstr example'><div class='header Example'>Example</div><div class='content'><p><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">init</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Initialized, only called once!&quot;</span><span class="p">)</span>
+<span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="k">def</span> <span class="nf">update</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Called for every start and restart!&quot;</span><span class="p">)</span>
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Update!&quot;</span><span class="p">)</span>
+        <span class="k">yield</span>
+<span class="o">&lt;/</span><span class="n">p</span><span class="o">&gt;&lt;</span><span class="n">p</span><span class="o">&gt;</span><span class="n">start_game</span><span class="p">(</span><span class="n">init</span><span class="p">,</span> <span class="n">update</span><span class="p">)</span>
+</pre></div>
+This code would create a game that prints the following:
+</p><p><pre style="font-size:1.2em">
+Initialized, only called once!
+I'm called for every start and restart!
+Update!
+Update!
+Update!
+.
+.
+.
+</pre>
+</p><p></p></div></div></div></div><footer>Made with <span class='heart'>&lt;3</span> by LiTHe-kod</footer></main></body></html>

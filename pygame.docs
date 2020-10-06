@@ -1,0 +1,15 @@
+# `pg.Color(r, g, b)`
+
+Creates a new color with the given
+r=red, g=green, b=blue.
+
+255 -> Full, 0 -> None.
+
+## ex
+So `pg.Color(255, 0, 0)` will give you really bright
+red <span class="swatch" style="background-color: #F00"></span>, since it's only red and it's at max value.
+
+## ex
+So `pg.Color(255, 255, 255)` will give you bright white.
+<span class="swatch" style="background-color: #FFF"></span>
+(White is a mixture of all colors when working with displays.)

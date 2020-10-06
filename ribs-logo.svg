@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+   <!--
+   width="112mm"
+   height="45mm"
+   -->
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   viewBox="0 0 112 45"
+   version="1.1"
+   id="svg8"
+   inkscape:version="1.0.1 (3bc2e813f5, 2020-09-07)"
+   sodipodi:docname="ribs-logo.svg">
+  <defs
+     id="defs2">
+    <rect
+       x="60.059013"
+       y="17.841997"
+       width="97.661217"
+       height="48.520496"
+       id="rect909" />
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="1.4"
+     inkscape:cx="408.05049"
+     inkscape:cy="191.36997"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     inkscape:document-rotation="0"
+     showgrid="false"
+     inkscape:window-width="1890"
+     inkscape:window-height="1030"
+     inkscape:window-x="14"
+     inkscape:window-y="34"
+     inkscape:window-maximized="1"
+     inkscape:pagecheckerboard="true" />
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <path
+       id="path837"
+       style="fill:#d9cbac;fill-opacity:1;stroke:none;stroke-width:1.265;stroke-linecap:round;stroke-linejoin:round;paint-order:stroke fill markers"
+       d="M 55.889823,1.0997791 A 55.2798,24.234047 0 0 0 0.70146013,25.333958 55.2798,24.234047 0 0 0 22.139428,44.49558 50.825849,22.895351 0 0 1 5.936281,27.734329 50.825849,22.895351 0 0 1 56.76212,4.8390859 50.825849,22.895351 0 0 1 107.58796,27.734329 50.825849,22.895351 0 0 1 98.317723,40.916472 55.2798,24.234047 0 0 0 111.26112,25.333958 55.2798,24.234047 0 0 0 55.981289,1.0997791 a 55.2798,24.234047 0 0 0 -0.09147,0 z"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300" />
+    <path
+       id="path837-3"
+       style="fill:#d9cbac;fill-opacity:1;stroke:none;stroke-width:1.265;stroke-linecap:round;stroke-linejoin:round;paint-order:stroke fill markers"
+       d="M 56.792364,8.2913531 A 37.003611,20.378263 0 0 0 19.849956,28.669728 37.003611,20.378263 0 0 0 34.200265,44.782621 34.022192,19.252562 0 0 1 23.35408,30.688187 34.022192,19.252562 0 0 1 57.376274,11.435715 a 34.022192,19.252562 0 0 1 34.02218,19.252472 34.022192,19.252562 0 0 1 -6.20538,11.084783 37.003611,20.378263 0 0 0 8.66415,-13.103242 37.003611,20.378263 0 0 0 -37.00363,-20.3783749 37.003611,20.378263 0 0 0 -0.0613,0 z"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300" />
+    <path
+       id="path901"
+       style="fill:#d9cbac;fill-opacity:1;stroke:none;stroke-width:1.265;stroke-linecap:round;stroke-linejoin:round;paint-order:stroke fill markers"
+       d="m 56.815374,14.74684 a 23.098357,13.168231 0 0 0 -23.060156,13.168302 23.098357,13.168231 0 0 0 8.957736,10.411991 21.237298,12.440814 0 0 1 -6.770395,-9.107683 21.237298,12.440814 0 0 1 21.237295,-12.440755 21.237298,12.440814 0 0 1 21.2373,12.440755 21.237298,12.440814 0 0 1 -3.87352,7.162877 23.098357,13.168231 0 0 0 5.40833,-8.467185 23.098357,13.168231 0 0 0 -23.09837,-13.168302 23.098357,13.168231 0 0 0 -0.0383,0 z"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300" />
+    <path
+       id="path903"
+       style="fill:#d9cbac;fill-opacity:1;stroke:none;stroke-width:1.265;stroke-linecap:round;stroke-linejoin:round;paint-order:stroke fill markers"
+       d="m 56.827324,20.750734 a 15.876904,6.4625744 0 0 0 -15.850648,6.462609 15.876904,6.4625744 0 0 0 6.157196,5.109894 14.597685,6.1055799 0 0 1 -4.653704,-4.469779 14.597685,6.1055799 0 0 1 14.597686,-6.105551 14.597685,6.1055799 0 0 1 14.59768,6.105551 14.597685,6.1055799 0 0 1 -2.6625,3.515326 15.876904,6.4625744 0 0 0 3.71747,-4.155441 15.876904,6.4625744 0 0 0 -15.87691,-6.462609 15.876904,6.4625744 0 0 0 -0.0263,0 z"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300" />
+    <path
+       style="fill:#d9cbac;fill-opacity:1;stroke:none;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 57.077854,21.747907 49.739716,3.1000311 65.138344,3.0391901 Z"
+       id="path905"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300" />
+    <text
+       xml:space="preserve"
+       id="text907"
+       style="font-size:10.5833px;line-height:1.25;font-family:'Comic Sans MS';-inkscape-font-specification:'Comic Sans MS';letter-spacing:0px;word-spacing:0px;white-space:pre;shape-inside:url(#rect909);fill:#453a1f;fill-opacity:1;stroke:none;stroke-width:0.298711;stroke-opacity:1;"
+       transform="matrix(3.3477151,0,0,3.3477151,-183.65043,-54.678243)"
+       inkscape:export-xdpi="300"
+       inkscape:export-ydpi="300"><tspan
+         x="60.058594"
+         y="27.205537"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:'DejaVu Sans';-inkscape-font-specification:'DejaVu Sans';fill:#453a1f;fill-opacity:1;stroke:none;stroke-width:0.298711;stroke-opacity:1">Ribs</tspan></tspan></text>
+  </g>
+</svg>

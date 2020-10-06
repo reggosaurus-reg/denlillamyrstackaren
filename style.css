@@ -1,0 +1,213 @@
+body {
+    font-family: sans-serif;
+}
+
+main {
+    max-width: 100%;
+}
+
+main > * {
+    margin: 0px auto;
+    max-width: 960px;
+}
+
+code {
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.swatch {
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    border: 1px solid black;
+    vertical-align: text-bottom;
+}
+
+.func {
+    margin-top: 2.0em;
+}
+
+.args {
+    border-left: 2px solid #EAE;
+    padding-left: 1em;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+}
+
+.args td {
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+}
+
+.func .title {
+    margin-bottom: 0.1em;
+}
+
+.docstr {
+    margin-top: 0.5em;
+    margin-left: 2em;
+}
+
+.docstr .header {
+    font-weight: 700;
+    padding: 0.4em;
+    padding-left: 0.5em;
+    margin-bottom: 0.6em 0em;
+}
+
+.docstr .header, .docstr .content {
+    padding: 0.1em;
+    padding-left: 0.5em;
+}
+
+.Doc {
+}
+
+.Ex {
+}
+
+/*
+.docstr {
+    background-color: #EEE;
+}
+*/
+
+.explain .header {
+    border-left: 4px #267711 solid;
+}
+
+.example .header {
+    border-left: 4px #2e1177 solid;
+}
+
+.toc h1 {
+    font-size: 1.3em;
+}
+.toc h2 {
+    font-size: 1.2em;
+    margin-left: 1em;
+}
+.toc a {
+    margin-left: 2em;
+    text-decoration: none;
+    color: #2000ff;
+    font-family: monospace;
+    font-size: 1.2em;
+    width: 100%;
+    display: inline-block;
+    padding: 4px;
+}
+.toc a:hover {
+    background-color: #e1e1e1
+}
+
+.highlight {
+    font-family: "Source Code Pro",monospace;
+    font-size: 1.2em;
+    background-color: #eee;
+    padding: 10px;
+    margin: 10px 0px;
+}
+/*Partial css reset*/
+.highlight pre {
+    padding: 0px;
+    margin: 0px;
+}
+
+.args code {
+    font-family: "Source Code Pro",monospace;
+    font-size: 1.0em;
+}
+
+footer {
+    text-align: center;
+    padding: 2em;
+    border-top: 1px solid #e1e1e1;
+    color: #999;
+}
+
+.heart {
+    color: #C11;
+    animation-direction: alternate;
+    animation-name: heart-anim;
+    animation-duration: 2s;
+}
+
+svg.logo {
+    max-width: 10em;
+    width: calc(100% - 3em);
+    padding: 1.5em;
+    padding-bottom: 0px;
+    margin: auto;
+}
+
+@keyframes heart-anim {
+    from { color: #999; };
+    to { color: #F33; };
+}
+
+@media screen and (min-width: 960px) {
+    .toc {
+        width: 300px;
+        position: fixed;
+        overflow-y: auto;
+        overflow-x: hidden;
+        background-color: white;
+        z-index: 1;
+        top: 0;
+        max-height: 100vh;
+        border-right: 2px #e6e6e6 solid;
+    }
+    #lithekod, #pygame {
+        margin: 0px auto;
+    }
+
+    /*If the TOC is floating, don't put stuff underneath*/
+    main {
+        padding-left: 315px;
+    }
+
+    .toc {
+        height: 100vh;
+    }
+}
+
+@media screen and (min-width: 720px) {
+    .toc {
+        width: 240px;
+        position: fixed;
+        overflow-y: auto;
+        overflow-x: hidden;
+        background-color: white;
+        z-index: 1;
+        top: 0;
+        max-height: 100vh;
+        border-right: 2px #e6e6e6 solid;
+    }
+    #lithekod, #pygame {
+        margin: 0px auto;
+    }
+
+    /*If the TOC is floating, don't put stuff underneath*/
+    main {
+        padding-left: 250px;
+    }
+
+    .toc {
+        height: 100vh;
+    }
+}
+
+/* Function name highlighting */
+.paren, .comma {
+    color: #808080;
+}
+
+.eq, .default_arg {
+    color: #508157;
+}
+
+.arg {
+    color: #ad448e;
+}
